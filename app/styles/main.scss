@@ -1,0 +1,75 @@
+$main: #00bff3;
+
+
+html, body{
+  width: 100%;
+  height: 100%;
+  font-family: 'Special Elite', 'Helvetica Neue', sans-serif;
+}
+
+h1{
+  font-size: 55px;
+  margin: 0;
+}
+h2{
+  font-size: 32px;
+  margin: 16px 0;
+}
+.navbar{
+  display: none;
+}
+.landing{
+  h1{
+    margin-bottom: 32px;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  .content{
+    width: 100%;
+    padding: 32px;
+    max-width: 800px;
+  }
+  .image{
+    max-width: 500px;
+    width: 50%;
+    margin: 0 auto; 
+    margin-bottom: 32px;
+    svg{
+      width: 100%;
+      .eye{
+        
+      }
+    }
+  }
+  .nav{
+    position: relative;
+    .button{
+      float: left;
+      width: 33.3333%;
+      height: 50px;
+      a{
+        transition: .5s ease all;
+        text-decoration: none;
+        color: inherit;
+        line-height: 80px;
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        &:hover{
+          border-color: $main;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+
+@keyframes example {
+    from {transform: translate(30%, 30%);}
+    to {transform: translate(-30%, -30%);}
+}
