@@ -39,8 +39,16 @@ h2{
     margin-bottom: 32px;
     svg{
       width: 100%;
+      #lids{
+        opacity: 0;
+      }
       .eye{
         
+      }
+      &:hover{
+        #lids{
+          opacity: 1;
+        }
       }
     }
   }
