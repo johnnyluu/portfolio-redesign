@@ -1,19 +1,23 @@
 $main: #00bff3;
-
+$grey: lightgrey;
 
 html, body{
   width: 100%;
   height: 100%;
   font-family: 'Special Elite', 'Helvetica Neue', sans-serif;
+  background: #777;
 }
 
 h1{
-  font-size: 55px;
+  font-size: 45px;
   margin: 0;
 }
 h2{
-  font-size: 32px;
+  font-size: 28px;
   margin: 16px 0;
+}
+.material-icons{
+  vertical-align: middle;
 }
 .navbar{
   display: none;
@@ -21,12 +25,19 @@ h2{
 .landing{
   h1{
     margin-bottom: 32px;
+    #scrolltext{
+      text-decoration: underline;
+    }
   }
+  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   text-align: center;
+  -webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+  box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+  position: relative;
   .content{
     width: 100%;
     padding: 32px;
@@ -53,11 +64,12 @@ h2{
     }
   }
   .nav{
-    position: relative;
+    position: relative;    // overflow:hidden;
     .button{
       float: left;
       width: 33.3333%;
-      height: 50px;
+      height: 80px;
+      margin-bottom: 16px;
       a{
         transition: .5s ease all;
         text-decoration: none;
@@ -67,17 +79,54 @@ h2{
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        border: 2px solid transparent;
+        // border: 2px dashed transparent;
+        position: relative;
+        overflow: hidden;
+        &:before{
+          transition: .5s ease all;
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          border: 3px dotted $main;
+          box-sizing: border-box;
+          opacity: 0;
+          animation: rotation 5s linear infinite;
+
+        }
         &:hover{
-          border-color: $main;
+          // border-color: $main;
           transform: scale(1.2);
+          &:before{
+            opacity: 1;          }
         }
       }
     }
   }
+  .scrolltip{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $grey;
+    width: 100%;
+    padding-left: 7px;
+  }
 }
 
-@keyframes example {
-    from {transform: translate(30%, 30%);}
-    to {transform: translate(-30%, -30%);}
+@keyframes flicker {
+    from {-webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+          box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);}
+    to {-webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.2);
+        box-shadow:inset 0 0 150px 0 rgba(0,0,0,.2);}
+}
+
+@keyframes rotation {
+    0% {-webkit-transform: rotate(0deg); border-color: $main}
+    25% {border-color: red}
+    50% {border-color: orange}
+    75% {border-color: greenyellow}
+    100%   {-webkit-transform: rotate(359deg); border-color: $main}
 }
