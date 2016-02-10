@@ -37,6 +37,6 @@ angular.module('repoApp')
     		$('#scrolltext').html(skills[current_skill].substr(0, count));
     		// console.log(skills[current_skill].substr(0, count));
     	}, 100, (skills[current_skill].length))
-    }, 2000);
+    }, 3000);
     
   });
