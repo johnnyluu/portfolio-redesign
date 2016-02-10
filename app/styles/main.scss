@@ -27,6 +27,7 @@ h2{
     margin-bottom: 32px;
     #scrolltext{
       text-decoration: underline;
+      animation: glowing 2s linear 1s infinite;
     }
   }
   background: white;
@@ -129,4 +130,9 @@ h2{
     50% {border-color: orange}
     75% {border-color: greenyellow}
     100%   {-webkit-transform: rotate(359deg); border-color: $main}
+}
+
+@keyframes glowing {
+  0% {text-shadow: 0 0 0 $main}
+  50% {text-shadow: 0 0 80px transparent}
 }
