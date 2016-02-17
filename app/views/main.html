@@ -9,7 +9,7 @@
     </div>
     <div class="nav">
       <div class="button">
-        <a href="#/about"><i class="material-icons">&#xE851;</i><span class="text">about</span></a>
+        <a href="#/about"><i class="material-icons">&#xE416;</i><span class="text">about</span></a>
       </div>
       <div class="button">
         <a href="#/work"><i class="material-icons">&#xE42A;</i><span class="text">work</span></a>
@@ -26,24 +26,24 @@
 <div class="updates">
   <div class="update gallery">
     <div class="text">
-      <h2 class="proj-title">Morofton ></h2>
+      <h2 class="proj-title">Morofton <i class="material-icons">&#xE5C8;</i></h2>
       <p class="proj-des">Do things you want to do more often</p>
       <p class="update-date">01 Nov 2015</p>
       <div class="update-content">
         <p>A common problem users had with the app was thatit was not available on the Playstore. so we createdthe android package, created the graphics, and uploaded to the play store. </p>
         <p>A common problem users had with the app was thatit was not available on the Playstore. so we createdthe android package, created the graphics, and uploaded to the play store.  </p>
       </div>
-      <p class="tags"><span class="tag">#Graphic design</span><span class="tag">#Android</span><span class="tag">#Illustrator</span><span class="tag">#Photoshop</span></p>
+      <p class="tags"><span class="tag">#Android</span> <span class="tag">#Android</span> <span class="tag">#Android</span> <span class="tag">#Android</span> <span class="tag">#Android</span> <span class="tag">#Android</span> <span class="tag">#Android</span> <span class="tag">#Android</span></p>
     </div>
-    <div class="images">
+    <div class="images" id="01112015morofton">
       <div class="image">
-        image
+        <img src="images/logo.svg">
         <div class="hover">
           <p class="caption">This image is fantasitic</p>
         </div>
       </div>
       <div class="image">
-        image
+        <img src="images/yeoman.png">
       </div>
       <div class="image">
         image
@@ -51,6 +51,17 @@
       <div class="image">
         image
       </div>
+      <div class="left" ng-click="back('#01112015morofton'); $event.stopPropagation();"><i class="material-icons">&#xE5CB;</i></div>
+      <div class="right" ng-click="next('#01112015morofton'); $event.stopPropagation()"><i class="material-icons">&#xE5CC;</i></div>
+    </div>
+  </div>
+  <div class="bigimg hidden" ng-click="hideBigImg()">
+    <img ng-src="{{imgurl}}">
+    <div.hover>
+      <p class="caption">{{imgcaption}}</p>
+    </div.hover>
+    <div class="close">
+      <i class="material-icons">&#xE313;</i>
     </div>
   </div>
 </div>
