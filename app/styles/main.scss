@@ -63,6 +63,11 @@ p.tags{
 .navbar{
   display: none;
 }
+
+// for temporarily disabling scroll
+.noscroll{
+  overflow: hidden;
+}
 .landing{
   h1{
     margin-bottom: 32px;

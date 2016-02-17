@@ -79,6 +79,7 @@ angular
     $(document).on("click", ".images .image", function(event) {
       event.stopPropagation();
       if($(this).parent().hasClass('expanded')){
+        $('body').addClass('noscroll');
         $('.bigimg').removeClass('hidden');
         $('.bigimg').addClass('show');
         $scope.imgurl = $(this).find('img').attr("src");
@@ -93,6 +94,7 @@ angular
 
     $scope.hideBigImg = function(){
       $('.bigimg').removeClass('show');
+      $('body').removeClass('noscroll');
       $timeout(function(){
         $('.bigimg').addClass('hidden');
         $scope.imgurl = '';
