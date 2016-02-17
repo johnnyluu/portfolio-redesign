@@ -78,7 +78,7 @@ angular
     //show big image lightbox when clicking on .image
     $(document).on("click", ".images .image", function(event) {
       event.stopPropagation();
-      if($(this).parent().hasClass('expanded')){
+      if($( window ).width() <= 960 || $(this).parent().hasClass('expanded')){
         $('body').addClass('noscroll');
         $('.bigimg').removeClass('hidden');
         $('.bigimg').addClass('show');

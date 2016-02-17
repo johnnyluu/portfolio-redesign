@@ -390,12 +390,44 @@ p.tags{
   }
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1201px){
   .update{
     .text{
       margin-left: calc(50vw - 600px);
     }
   }
+
+}
+
+@media (max-width: 960px) {
+  .update.gallery{
+    .images{
+      height: 370px;
+      width: 100vw;
+      left: 0;
+      &:hover{
+        .image{
+          margin-right: 32px;
+        }
+        
+      }
+      .image{
+        // animation: bounce .6s ease;
+        margin-right: 32px;
+        max-width: 80%;
+        // margin-left: 32px;
+      }
+      .left, .right{
+        display: initial;
+      }
+    }
+    .text{
+      width: 100%;
+      padding-top: 402px;
+      max-width: 760px
+    }
+  }
+
 }
 @keyframes flicker {
     from {-webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
