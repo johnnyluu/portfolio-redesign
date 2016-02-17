@@ -57,9 +57,7 @@
   </div>
   <div class="bigimg hidden" ng-click="hideBigImg()">
     <img ng-src="{{imgurl}}">
-    <div.hover>
-      <p class="caption">{{imgcaption}}</p>
-    </div.hover>
+    <p class="caption" ng-show="imgcaption">{{imgcaption}}</p>
     <div class="close">
       <i class="material-icons">&#xE313;</i>
     </div>

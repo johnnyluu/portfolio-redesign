@@ -347,7 +347,7 @@ p.tags{
   overflow: auto;
   &.show{
     opacity: 1;
-    padding-top: 16px;
+    padding-top: 100px;
   }
   &.hidden{
     z-index: -100;
@@ -356,6 +356,7 @@ p.tags{
     margin: 0 auto;
     display: block;
     width: 100%;
+    max-width: 1200px;
     // background: rgba(255,255,255,.5);
   }
   .close{
@@ -373,6 +374,19 @@ p.tags{
       color: $main;
       padding-top: 48px;
     }
+  }
+  p.caption{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,.5);
+    margin: 0;
+    padding: 32px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 150px;
   }
 }
 
