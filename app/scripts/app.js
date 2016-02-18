@@ -82,6 +82,7 @@ angular
         $('body').addClass('noscroll');
         $('.bigimg').removeClass('hidden');
         $('.bigimg').addClass('show');
+        $('.bigimg').scrollTop(0);
         $scope.imgurl = $(this).find('img').attr("src");
         $scope.imgcaption = $(this).find('.caption').html();
         $scope.$apply();

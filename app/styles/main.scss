@@ -1,5 +1,6 @@
 $main: #00bff3;
 $main-opaque: rgba(0, 191, 243, 0.93);
+$light: skyblue;
 $grey: #C3C3C3;
 $text: #4A4A4A;
 $bg: #ECECEC;
@@ -28,6 +29,9 @@ h2{
 p{
   color: $text;
   line-height: 24px;
+  strong{
+    border-bottom: 4px solid $light;
+  }
 }
 h2.proj-title{
   color: $grey;
@@ -217,7 +221,7 @@ p.tags{
       &:hover{
         .image{
           // margin-right: -23vw;
-          margin-right: -130px;
+          margin-right: -220px;
         }
       }
       &:before {
@@ -258,7 +262,7 @@ p.tags{
         // height: 20vw;
         height: 300px;
         margin: 16px 32px;
-        margin-right: -180px;
+        margin-right: -264px;
         // margin-left: -150px;
         display: inline-block;
         background: $grey;
@@ -342,21 +346,29 @@ p.tags{
   background: $main-opaque;
   overflow: auto;
   padding: 16px;
-  padding-top: 100vh;
+  padding-bottom: 100px;
+  // padding-top: 100vh;
   z-index: 100;
   overflow: auto;
   &.show{
     opacity: 1;
-    padding-top: 100px;
+    // padding-top: 16px;
+    img{
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   &.hidden{
     z-index: -100;
   }
   img{
+    transition: .5s transform ease;
     margin: 0 auto;
     display: block;
     width: 100%;
     max-width: 1200px;
+    transform: translateY(500px);
+    opacity: 0;
     // background: rgba(255,255,255,.5);
   }
   .close{
@@ -364,20 +376,20 @@ p.tags{
     cursor: pointer;
     transition: .5s ease all;
     background: rgba(255,255,255,.5);
-    color: $grey;
+    color: $main;
     padding: 32px;
     position: fixed;
-    top: 0;
+    bottom: 0;
     right: 32px;
     &:hover{
       background: white;
-      color: $main;
-      padding-top: 48px;
+      // color: $main;
+      padding-bottom: 48px;
     }
   }
   p.caption{
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     background: rgba(255,255,255,.5);
     margin: 0;
@@ -419,6 +431,7 @@ p.tags{
       }
       .left, .right{
         display: initial;
+        padding: 16px;
       }
     }
     .text{
