@@ -129,8 +129,9 @@ p.tags{
     display: inline-block;
     margin: 0;
     padding: 0;
+    vertical-align: middle;
     li{
-      margin-left: -3px;
+      margin-left: -5px;
       transition: .5s ease all;
       display: inline-block;
       width: 70px;
@@ -617,6 +618,17 @@ p.tags{
 
 @media (max-width: 960px) {
   .navbar{
+    top: auto;
+    bottom: 0px;
+    &.hidden{
+      transform: translateY(100%);
+      ul{
+        li{
+          transform: translateY(100%);
+        }
+      }
+        
+    }
     ul{
       li{
         opacity: 1;
