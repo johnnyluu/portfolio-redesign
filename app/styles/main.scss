@@ -216,6 +216,17 @@ p.tags{
       background: $bg-opaque;
     }
   }
+
+  &.textonly{
+    .text{
+      width: 100%;
+      max-width: 1200px;
+      .update-content{
+        columns: auto 2;
+        column-gap: 32px;
+      }
+    }
+  }
   // gallery posts
   &.gallery{
     .images{
@@ -490,6 +501,14 @@ p.tags{
     }
     .single-image{
       height: 300px;
+    }
+  }
+  .update.textonly{
+    .text{
+      max-width: 760px;
+      .update-content{
+        columns: auto 1;
+      }
     }
   }
 }
