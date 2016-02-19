@@ -31,11 +31,22 @@ angular
         templateUrl: 'views/styleguide.html',
         controller: 'StyleguideCtrl'
       })
+      .when('/portfolio', {
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
-  .controller('AppCtrl', function ($scope, $timeout) {
+  .directive('updates', function(){
+    return{
+      restrict: 'AE',
+      templateUrl: 'views/updates.html',
+      transclude: 'true',
+    }
+  })
+  .controller('AppCtrl', function ($scope, $timeout, $route) {
     $scope.expand = function(id){
       // console.log('expanding '+id);
       $(id).addClass('expanded');
@@ -58,6 +69,8 @@ angular
       }
       
     }
+
+    //scroll the gallery to the right
     $scope.next = function(id){
       var last_right = $(window).width() - ($(id + ' .image').last().offset().left + $(id + ' .image').last().outerWidth());
       if (last_right < 0) {
@@ -69,12 +82,16 @@ angular
       }, 600);
       
     }
+
+    //detect the position of the gallery
     function currentstep(id){
       var width = $(id + ' .image').first().width() + 32;
       var left = -$(id + ' .image').first().css('margin-left').slice(0, -2);
       var n = ~~(left / width);
       return n + 1;
     }
+
+    //check if the gallery is expanded
     $scope.expanded = function(id){
       return $(id).hasClass('expanded');
     }
@@ -84,6 +101,7 @@ angular
     $(document).on("click", ".images .image", function(event) {
       event.stopPropagation();
       if($( window ).width() <= 960 || $(this).parent().hasClass('expanded')){
+        //prevents the webpage in the background from scrolling
         $('body').addClass('noscroll');
         $('.bigimg').removeClass('hidden');
         $('.bigimg').addClass('show');
@@ -95,6 +113,7 @@ angular
       
     });
 
+    //allow body to scroll, fade out image then add hidden class to move it behind the page.
     $scope.hideBigImg = function(){
       $('.bigimg').removeClass('show');
       $('body').removeClass('noscroll');
@@ -144,4 +163,19 @@ angular
         $scope.imgcaption = currentImg.find('.caption').html();
         $scope.$apply();
     }
+
+    //scroll back to top when changing routes
+    $scope.$on('$routeChangeStart', function(event, next, current){
+      //fadeout animation
+      $('body').css('opacity', '0');
+      $timeout(function(){
+        $('body').scrollTop(0);
+        $('body').css('opacity', '1');
+      }, 200);
+
+      //show navbar if not showing
+      if($('.navbar').hasClass('hidden')){
+        $('.navbar').removeClass('hidden');
+      }
+    })
   });

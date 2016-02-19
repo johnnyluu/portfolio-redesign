@@ -25,27 +25,19 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <a class="navbar-brand" href="#/">repo</a>
-          </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
+      <div class="navbar navbar-default">
+        <a class="navbar-brand" href="#/"><div ng-include="'images/logo.svg'"></div></a>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/"><i class="material-icons">&#xE42A;</i><span>work</span></a></li>
+          <li><a ng-href="#/about"><i class="material-icons">&#xE416;</i><span>about</span></a></li>
+          <li><a ng-href="#/"><i class="material-icons">&#xE8AF;</i><span>contact</span></a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="container">
+    <div class="bodycontainer">
     <div ng-view=""></div>
+    <updates></updates>
     </div>
 
     <div class="footer">
@@ -84,6 +76,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/styleguide.js"></script>
+        <script src="scripts/controllers/portfolio.js"></script>
         <!-- endbuild -->
 </body>
 </html>
