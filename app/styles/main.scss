@@ -358,11 +358,17 @@ p.tags{
       opacity: 1;
     }
   }
+  &.changing{
+    img{
+      transform: translateY(500px);
+      opacity: 0;
+    }
+  }
   &.hidden{
     z-index: -100;
   }
   img{
-    transition: .5s transform ease;
+    transition: .5s all ease;
     margin: 0 auto;
     display: block;
     width: 100%;
@@ -381,10 +387,30 @@ p.tags{
     position: fixed;
     bottom: 0;
     right: 32px;
+    z-index: 100;
     &:hover{
       background: white;
       // color: $main;
       padding-bottom: 48px;
+    }
+  }
+  .nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    .left, .right{
+      float: left;
+      height: 100%;
+      width: 50%;
+    }
+    .left{
+      cursor: url(../images/left.png), w-resize;
+    }
+    .right{
+      cursor: url(../images/right.png), e-resize;
     }
   }
   p.caption{

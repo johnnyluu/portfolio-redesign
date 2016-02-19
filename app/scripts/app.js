@@ -33,7 +33,7 @@ angular
   })
   .controller('AppCtrl', function ($scope, $timeout) {
     $scope.expand = function(id){
-      console.log('expanding '+id);
+      // console.log('expanding '+id);
       $(id).addClass('expanded');
     }
     $scope.back = function(id){
@@ -75,6 +75,7 @@ angular
       return $(id).hasClass('expanded');
     }
 
+    var currentImg;
     //show big image lightbox when clicking on .image
     $(document).on("click", ".images .image", function(event) {
       event.stopPropagation();
@@ -82,10 +83,7 @@ angular
         $('body').addClass('noscroll');
         $('.bigimg').removeClass('hidden');
         $('.bigimg').addClass('show');
-        $('.bigimg').scrollTop(0);
-        $scope.imgurl = $(this).find('img').attr("src");
-        $scope.imgcaption = $(this).find('.caption').html();
-        $scope.$apply();
+        setSlide($(this));
       } else {
         var id = '#' + $(this).parent().attr('id')
         $scope.expand(id);
@@ -100,7 +98,46 @@ angular
         $('.bigimg').addClass('hidden');
         $scope.imgurl = '';
         $scope.imgcaption = '';
+        $('.bigimg').scrollTop(0);
         $scope.$apply();
       }, 500);
+    }
+
+    //move to the next slide or back to the first
+    $scope.nextSlide = function(){
+      $('.bigimg').addClass('changing');
+      $timeout(function(){
+        if(currentImg.next().hasClass('image')){
+          setSlide(currentImg.next());
+        } else {
+          var id = '#' + currentImg.parent().attr('id');
+          setSlide($(id + ' .image').first());
+        };
+        $('.bigimg').scrollTop(0);
+        $('.bigimg').removeClass('changing');
+      }, 500);
+    }
+
+    //move to the previous slide or straight to the last
+    $scope.lastSlide = function(){
+      $('.bigimg').addClass('changing');
+      $timeout(function(){
+        if(currentImg.prev().hasClass('image')){
+          setSlide(currentImg.prev());
+        } else {
+          var id = '#' + currentImg.parent().attr('id');
+          setSlide($(id + ' .image').last());
+        };
+        $('.bigimg').scrollTop(0);
+        $('.bigimg').removeClass('changing');
+      }, 500);
+    }
+
+    //change the slide and caption
+    function setSlide(img){
+        currentImg = img;
+        $scope.imgurl = currentImg.find('img').attr("src");
+        $scope.imgcaption = currentImg.find('.caption').html();
+        $scope.$apply();
     }
   });
