@@ -4,6 +4,7 @@ $light: skyblue;
 $grey: #C3C3C3;
 $text: #4A4A4A;
 $bg: #ECECEC;
+$bg-opaque: rgba(236, 236, 236, 0.95);
 
 html, body{
   width: 100%;
@@ -199,25 +200,36 @@ p.tags{
   min-height: 300px;
   border-top:1px solid $main;
   position: relative;
+  -webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+  box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+  // margin-bottom: 5px;
   .text{
     width: 50%;
     max-width: 600px;
     float: left;
     padding: 32px;
   }
+  // single image posts
+  &.single{
+    padding: 32px 0;
+    .text{
+      background: $bg-opaque;
+    }
+  }
+  // gallery posts
   &.gallery{
     .images{
       transition: .5s ease all;
       width: 50vw;
       white-space: nowrap;
       // padding-top: 32px;
-      background: $bg;
       height: 100%;
       position: absolute;
       width: 50vw;
       overflow: hidden;
       left: 50vw;
       top: 0;
+      background: transparent;
       &:hover{
         .image{
           // margin-right: -23vw;
@@ -232,6 +244,7 @@ p.tags{
         vertical-align: middle;
       }
       &.expanded{
+        background: $bg;
         width: 100vw;
         left: 0;
         .image{
@@ -466,7 +479,19 @@ p.tags{
       max-width: 760px
     }
   }
-
+  .update.single{
+    padding: 0;
+    background: $bg !important;
+    .text{
+      // margin-top: 180px;
+      background: transparent;
+      width: 100%;
+      max-width: 760px;
+    }
+    .single-image{
+      height: 300px;
+    }
+  }
 }
 @keyframes flicker {
     from {-webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
