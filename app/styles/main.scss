@@ -5,6 +5,7 @@ $grey: #C3C3C3;
 $text: #4A4A4A;
 $bg: #ECECEC;
 $bg-opaque: rgba(236, 236, 236, 0.95);
+$shadow: rgba(0, 0, 0, 0.35);
 
 html, body{
   transition: .2s ease all;
@@ -79,7 +80,7 @@ p.tags{
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 200;
+  z-index: 10;
   -webkit-box-shadow: 0 0 150px 0 rgba(0,0,0,.1);
   box-shadow: 0 0 150px 0 rgba(0,0,0,.1);
   padding: 9px 0;
@@ -330,7 +331,7 @@ p.tags{
     border-bottom: none;
     border-radius: 12px 12px 0 0 ;
     flex: 1;
-    box-shadow: 0 70px 100px $grey; 
+    box-shadow: 0 3px 3px $shadow; 
     position: relative;
     .buttons{
       position: absolute;
@@ -353,8 +354,8 @@ p.tags{
   min-height: 300px;
   border-top:1px solid $main;
   position: relative;
-  -webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
-  box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+  // -webkit-box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
+  // box-shadow:inset 0 0 150px 0 rgba(0,0,0,.1);
   // margin-bottom: 5px;
   .text{
     width: 50%;
