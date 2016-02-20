@@ -19,7 +19,7 @@ angular.module('repoApp')
 
 
     $(document).scroll(function(){
-        console.log('scrolling');
+        // console.log('scrolling');
         if($(document).scrollTop() >= $(window).height() && $('.navbar').hasClass('hidden')){
             $('.navbar').removeClass('hidden');
         } else if ($(document).scrollTop() < $(window).height() && !$('.navbar').hasClass('hidden')){

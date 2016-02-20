@@ -46,7 +46,7 @@ angular
       transclude: 'true',
     }
   })
-  .controller('AppCtrl', function ($scope, $timeout, $route) {
+  .controller('AppCtrl', function ($scope, $timeout, $route, $location) {
     $scope.expand = function(id){
       // console.log('expanding '+id);
       $(id).addClass('expanded');
@@ -166,6 +166,7 @@ angular
 
     //scroll back to top when changing routes
     $scope.$on('$routeChangeStart', function(event, next, current){
+      // console.log(next);
       //fadeout animation
       $('body').css('opacity', '0');
       $timeout(function(){
@@ -176,6 +177,23 @@ angular
       //show navbar if not showing
       if($('.navbar').hasClass('hidden')){
         $('.navbar').removeClass('hidden');
+      }
+    })
+
+    var path;
+    //filter posts based on current route
+    $scope.$on('$routeChangeSuccess', function(event, current, previous){
+      path = $location.path().slice(1);
+      if(path === ''){
+        $('.update:lt(5)').show();
+      }else{
+        $('.update').each(function(){
+          if($(this).attr('project') === path){
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
       }
     })
   });
