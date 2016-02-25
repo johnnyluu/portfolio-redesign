@@ -35,6 +35,14 @@ angular
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl'
       })
+      .when('/work', {
+        templateUrl: 'views/work.html',
+        controller: 'WorkCtrl'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -184,7 +192,7 @@ angular
     //filter posts based on current route
     $scope.$on('$routeChangeSuccess', function(event, current, previous){
       path = $location.path().slice(1);
-      if(path === ''){
+      if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
         $('.update:lt(5)').show();
       }else{
         $('.update').each(function(){
