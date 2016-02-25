@@ -43,6 +43,66 @@ angular
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl'
       })
+      .when('/lacasarosa', {
+        templateUrl: 'views/lacasarosa.html',
+        controller: 'LacasarosaCtrl'
+      })
+      .when('/1ring', {
+        templateUrl: 'views/1ring.html',
+        controller: '1ringCtrl'
+      })
+      .when('/readingparks', {
+        templateUrl: 'views/readingparks.html',
+        controller: 'ReadingparksCtrl'
+      })
+      .when('/1linepitch', {
+        templateUrl: 'views/1linepitch.html',
+        controller: '1linepitchCtrl'
+      })
+      .when('/merchantwarriors', {
+        templateUrl: 'views/merchantwarriors.html',
+        controller: 'MerchantwarriorsCtrl'
+      })
+      .when('/anemu', {
+        templateUrl: 'views/anemu.html',
+        controller: 'AnemuCtrl'
+      })
+      .when('/misale', {
+        templateUrl: 'views/misale.html',
+        controller: 'MisaleCtrl'
+      })
+      .when('/morofton', {
+        templateUrl: 'views/morofton.html',
+        controller: 'MoroftonCtrl'
+      })
+      .when('/thenewscloud', {
+        templateUrl: 'views/thenewscloud.html',
+        controller: 'ThenewscloudCtrl'
+      })
+      .when('/waterbottle', {
+        templateUrl: 'views/waterbottle.html',
+        controller: 'WaterbottleCtrl'
+      })
+      .when('/tuition', {
+        templateUrl: 'views/tuition.html',
+        controller: 'TuitionCtrl'
+      })
+      .when('/mystories', {
+        templateUrl: 'views/mystories.html',
+        controller: 'MystoriesCtrl'
+      })
+      .when('/brisaccess', {
+        templateUrl: 'views/brisaccess.html',
+        controller: 'BrisaccessCtrl'
+      })
+      .when('/wildlifeausmag', {
+        templateUrl: 'views/wildlifeausmag.html',
+        controller: 'WildlifeausmagCtrl'
+      })
+      .when('/misc', {
+        templateUrl: 'views/misc.html',
+        controller: 'MiscCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -192,9 +252,13 @@ angular
     //filter posts based on current route
     $scope.$on('$routeChangeSuccess', function(event, current, previous){
       path = $location.path().slice(1);
+      console.log(path);
       if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
+        $('.update').hide();
         $('.update:lt(5)').show();
+        showTitle();
       }else{
+        hideTitle();
         $('.update').each(function(){
           if($(this).attr('project') === path){
             $(this).show();
@@ -204,4 +268,14 @@ angular
         });
       }
     })
+
+    function hideTitle(){
+      $('p.proj-des').hide();
+      $('h2.proj-title').parent().hide();
+    }
+
+    function showTitle(){
+      $('p.proj-des').show();
+      $('h2.proj-title').parent().show();
+    }
   });
