@@ -659,22 +659,20 @@ p.tags{
     }
   }
   .nav{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
     .left, .right{
+      position: fixed;
+      top: 0;
+      width: 10%;
+      height: 100vh;
       float: left;
-      height: 100%;
-      width: 50%;
     }
     .left{
       cursor: url(../images/left.png), w-resize;
+      left: 0;
     }
     .right{
       cursor: url(../images/right.png), e-resize;
+      right: 0; 
     }
   }
   p.caption{
