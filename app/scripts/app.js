@@ -103,6 +103,10 @@ angular
         templateUrl: 'views/misc.html',
         controller: 'MiscCtrl'
       })
+      .when('/trademarkvision', {
+        templateUrl: 'views/trademarkvision.html',
+        controller: 'TrademarkvisionCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -114,7 +118,45 @@ angular
       transclude: 'true',
     }
   })
+  .directive('ptitle', function($location){
+    return{
+      restrict: 'E',
+      templateUrl: 'views/project_title_template.html',
+      scope: {
+        title: '@',
+        description: '@',
+        award: '@',
+        isphone: '=',
+        image: '@',
+        video: '@'
+      },
+      controller: function($scope, $location){
+        var projects = ['1ring', 'readingparks', '1linepitch', 'merchantwarriors', 'anemu', 'lacasarosa', 'misale', 'trademarkvision', 'morofton', 'thenewscloud', 'waterbottle', 'tuition', 'brisaccess', 'wildlifeausmag', 'portfolio', 'misc'];
+        // console.log($scope.video);
+        var p = $location.path().slice(1);
+        var index = projects.indexOf(p);
+        $scope.nextProject = function(){
+          var next = projects[projects.indexOf(p) + 1] || projects[0];
+          $location.path('/' + next);
+        }
+
+        $scope.lastProject = function(){
+          var last = projects[projects.indexOf(p) - 1] || projects[project.length - 1];
+          $location.path('/' + last);
+        }
+      },
+      link: function(scope, element, attrs){
+        if(attrs.video){
+          $(element[0].querySelector('.preview .video')).attr('src', attrs.video);
+        } else {
+          $(element[0].querySelector('.preview .video')).remove();
+        }
+        
+      }
+    }
+  })
   .controller('AppCtrl', function ($scope, $timeout, $route, $location) {
+
     $scope.expand = function(id){
       // console.log('expanding '+id);
       $(id).addClass('expanded');
@@ -255,7 +297,7 @@ angular
     $scope.$on('$routeChangeSuccess', function(event, current, previous){
       path = $location.path().slice(1);
       step = 1;
-      console.log(path);
+      // console.log(path);
       if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
         $('.loadmore').show();
         $('.update').hide();
