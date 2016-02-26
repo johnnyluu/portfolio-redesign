@@ -249,16 +249,21 @@ angular
     })
 
     var path;
+    //for showing more content
+    var step = 1;
     //filter posts based on current route
     $scope.$on('$routeChangeSuccess', function(event, current, previous){
       path = $location.path().slice(1);
+      step = 1;
       console.log(path);
       if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
+        $('.loadmore').show();
         $('.update').hide();
         $('.update:lt(5)').show();
         showTitle();
       }else{
         hideTitle();
+        $('.loadmore').hide();
         $('.update').each(function(){
           if($(this).attr('project') === path){
             $(this).show();
@@ -277,5 +282,15 @@ angular
     function showTitle(){
       $('p.proj-des').show();
       $('h2.proj-title').parent().show();
+    }
+
+
+    // show more posts
+    $scope.showmore = function(){
+      $('.update:lt(' + (step*5 + 5) + ')').show();
+      if((step*5+5) >= $('.update').size()){
+        $('.loadmore').hide();
+      }
+      step ++;
     }
   });

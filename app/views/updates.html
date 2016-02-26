@@ -1,8 +1,53 @@
 <div class="updates">
+  <div class="update single" project="lacasarosa" style="background: url('images/lacasarosa/gallery.jpg') no-repeat center top; background-size: cover;">
+    <div class="single-image" style="background: url('images/lacasarosa/gallery.jpg') no-repeat center top; background-size: cover;"></div>
+    <div class="text">
+      <a href="#/lacasarosa"><h2 class="proj-title">La Casa Rosa<i class="material-icons">&#xE5C8;</i></h2></a>
+      <p class="proj-des">Italian restaurant website redesign</p>
+      <p class="update-date">26 Feb 2016</p>
+      <div class="update-content">
+        <p>Italian restaurant and hotel <a href="http://sognocasarosa.com/" target="_blank"><i class="material-icons">&#xE157;</i> La Casa Rosa</a> asked <a href="http://www.andreaepifani.com" target="_target"><i class="material-icons">&#xE157;</i> Andrea Epifani</a> and me to redesign their website. The old site had a very dated aesthetics. The redesign features a hint of skeuomorphism, such as the poping out photo frames and stitches around text boxes. This gives the website a cosy feel and makes it stand out from the 'flat' trendy look. I designed the website while Andrea took care of the development.</p>
+      </div>
+      <p class="tags"><span class="tag">#WebDesign</span> <span class="tag">#Illustrator</span> <span class="tag">#Photoshop</span>
+    </div>
+  </div>
+  <div class="update gallery" project="anemu">
+    <div class="text">
+      <a href="#/anemu"><h2 class="proj-title">Anemu<i class="material-icons">&#xE5C8;</i></h2></a>
+      <p class="proj-des">identify local animals and record sightings</p>
+      <p class="update-date">26 Feb 2016</p>
+      <div class="update-content">
+        <p>Anemu was an entry for GovHack 2015, developed in collaboration with <a href="http://www.callumbuckmaster.com" target="_target"><i class="material-icons">&#xE157;</i> Callum Buckmaster</a>. It was selected the runner-up of Best Science Hack.  I was in charge of the design and development of the app's frontend. Anemu is an mobile app that helps users, especially curious young children identify animals around them. Instead of going through long lists of animal names, Anemu uses an image based approach. Users can simply select the most similar animal from a list of images, then the app will bring up images of more similar animals until the actual one is found. Anemu also contributes to open data by submiting sightings. <strong>It turns people's curiocity about animals into useful, publically available data.</strong>.</p>
+      </div>
+      <p class="tags"><span class="tag">#PhoneGap</span> <span class="tag">#UXDesign</span> <span class="tag">#UIDesign</span> <span class="tag">#Mobile</span> <span class="tag">#Android</span> <span class="tag">#iOS</span> <span class="tag">#Ionic</span>
+    </div>
+    <div class="images" id="26022016anemu">
+      <div class="image">
+        <img src="images/anemu/anemu_01.jpg">
+        <div class="hover">
+          <p class="caption">Anemu was awarded the second best science hack.</p>
+        </div>
+      </div>
+      <div class="image">
+        <img src="images/anemu/anemu_02.jpg">
+        <div class="hover">
+          <p class="caption">Anemu helps users identify animals.</p>
+        </div>
+      </div>
+      <div class="image">
+        <img src="images/anemu/anemu_03.jpg">
+        <div class="hover">
+          <p class="caption">Anenu lets you record sightings.</p>
+        </div>
+      </div>
+      <div class="left" ng-click="back('#26022016anemu'); $event.stopPropagation();"><i class="material-icons">&#xE5CB;</i></div>
+      <div class="right" ng-click="next('#26022016anemu'); $event.stopPropagation()"><i class="material-icons">&#xE5CC;</i></div>
+    </div>
+  </div>
   <div class="update single" project="readingparks" style="background: url('images/readingparks/bg.jpg') no-repeat center top; background-size: cover;">
     <div class="single-image" style="background: url('images/readingparks/bg.jpg') no-repeat center top; background-size: cover;"></div>
     <div class="text">
-      <a href="#/portfolio"><h2 class="proj-title">Reading Parks<i class="material-icons">&#xE5C8;</i></h2></a>
+      <a href="#/readingparks"><h2 class="proj-title">Reading Parks<i class="material-icons">&#xE5C8;</i></h2></a>
       <p class="proj-des">book sharing community</p>
       <p class="update-date">25 Feb 2016</p>
       <div class="update-content">
@@ -195,10 +240,13 @@
           <p class="caption">Three post templates: gallery, single image, and text only.</p>
         </div>
       </div>
-      <div class="left" ng-click="back('#01112015morofton'); $event.stopPropagation();"><i class="material-icons">&#xE5CB;</i></div>
-      <div class="right" ng-click="next('#01112015morofton'); $event.stopPropagation()"><i class="material-icons">&#xE5CC;</i></div>
+      <div class="left" ng-click="back('#01112015portfolio'); $event.stopPropagation();"><i class="material-icons">&#xE5CB;</i></div>
+      <div class="right" ng-click="next('#01112015portfolio'); $event.stopPropagation()"><i class="material-icons">&#xE5CC;</i></div>
     </div>
   </div>
+</div>
+<div class="loadmore" ng-click="showmore()">
+  <i class="material-icons">&#xE148;</i> Load More
 </div>
 <div class="bigimg hidden">
   <img ng-src="{{imgurl}}">

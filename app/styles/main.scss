@@ -334,7 +334,8 @@ p.tags{
     flex-wrap: wrap;
     padding: 0;
     overflow: auto;
-    padding-bottom: 64px;
+    //this is ignored by safari and firefox
+    // padding-bottom: 64px;
     &:after{
       content: '';
       position: absolute;
@@ -349,9 +350,9 @@ p.tags{
       cursor: pointer;
       box-shadow: inset 0 0 5px $shadow;
       min-height: 250px;
-      flex: 1;
+      flex: 1 0 25%;
       flex-grow: 1;
-      min-width: 25%;
+      // min-width: 25%;
       background: $grey;
       // border: 1px solid white;
       position: relative;
@@ -623,6 +624,20 @@ p.tags{
   }
 }
 
+.loadmore{
+  transition: .3s ease all;
+  padding: 32px 64px;
+  background: white;
+  color: $main;
+  text-align: center;
+  cursor: pointer;
+  border-top: 1px solid $main;
+  &:hover{
+    background: $main;
+    color: white;
+  }
+}
+
 .bigimg{
   opacity: 0;
   transition: .5s ease all;
@@ -634,7 +649,6 @@ p.tags{
   background: $main-opaque;
   overflow: auto;
   padding: 16px;
-  padding-bottom: 100px;
   // padding-top: 100vh;
   z-index: 100;
   overflow: auto;
@@ -663,6 +677,7 @@ p.tags{
     max-width: 1200px;
     transform: translateY(500px);
     opacity: 0;
+    margin-bottom: 100px;
     // background: rgba(255,255,255,.5);
   }
   .close{

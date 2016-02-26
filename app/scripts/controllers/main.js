@@ -17,7 +17,7 @@ angular.module('repoApp')
     
     $('.navbar').addClass('hidden');
 
-
+    //show navbar after scroll through the first screen
     $(document).scroll(function(){
         // console.log('scrolling');
         if($(document).scrollTop() >= $(window).height() && $('.navbar').hasClass('hidden')){
@@ -27,7 +27,7 @@ angular.module('repoApp')
         }
     });
 
-    //the eyes follow the cursor
+    //the eyes follow the cursor, not working property in firefox
     $( ".landing" ).mousemove(function( event ) {
     	var w = $('.landing').width();
     	var h = $('.landing').height();
