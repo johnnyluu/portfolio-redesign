@@ -146,6 +146,7 @@ angular
         }
       },
       link: function(scope, element, attrs){
+        //when element is created, add video src to the iframe or remove the iframe because add src in html doesn't work
         if(attrs.video){
           $(element[0].querySelector('.preview .video')).attr('src', attrs.video);
         } else {

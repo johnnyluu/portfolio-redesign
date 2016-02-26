@@ -5,7 +5,7 @@
       <h2 ng-if="description">{{description}}</h2>
       <p class="award" ng-if="award"><i class="material-icons">&#xE8D0;</i> {{award}}</p>
   </div>
-  <div class="preview" style="background: lightgrey url('images/{{image}}') no-repeat center top; background-size: cover;" ng-class="{phone: isphone===true}">
+  <div class="preview" style="background: lightgrey url('images/{{image}}') no-repeat center top; background-size: cover;" ng-class="{phone: isphone===true}" ng-show="image || video">
     <iframe class="video" ng-show="video" width="1000" height="563" frameborder="0" allowfullscreen></iframe>
 	  <div class="buttons">
 	  	<div class="button"></div>
