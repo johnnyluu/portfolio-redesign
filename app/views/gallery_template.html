@@ -1,0 +1,10 @@
+<div class="images" ng-class="{expanded: expanded}">
+  <div class="image" ng-repeat="image in images">
+    <img ng-src="images/{{image[0]}}">
+    <div class="hover" ng-if="image[1]">
+      <p class="caption">{{image[1]}}</p>
+    </div>
+  </div>
+  <div class="left" ng-click="back($event); $event.stopPropagation();"><i class="material-icons">&#xE5CB;</i></div>
+  <div class="right" ng-click="next(); $event.stopPropagation()"><i class="material-icons">&#xE5CC;</i></div>
+</div>

@@ -118,6 +118,118 @@ angular
       transclude: 'true',
     }
   })
+  .directive('update', function(){
+    return{
+      restrict: 'E',
+      templateUrl: 'views/update_template.html',
+      scope: {
+        project: '@',
+        title: '@',
+        description: '@',
+        date: '@',
+        image: '@',
+        tags: '=',
+        type: '@',
+        gallery: '='
+      },
+      transclude: 'true'
+    }
+  })
+  .directive('gallery', function(){
+    return{
+      restrict: 'E',
+      templateUrl: 'views/gallery_template.html',
+      scope: {
+        images: '='
+      },
+      transclude: 'true',
+      link: function(scope, element, attrs){
+        scope.element = $(element[0].querySelector('.images'));
+        scope.firstimg = scope.element.find('.image').first();
+        // console.log(scope.element);
+        //show big image lightbox when clicking on .image
+        element.on("click", ".images .image", function(event) {
+          event.stopPropagation();
+          if($( window ).width() <= 960 || $(this).parent().hasClass('expanded')){
+            //prevents the webpage in the background from scrolling
+            $('body').addClass('noscroll');
+            $('.bigimg').removeClass('hidden');
+            $('.bigimg').addClass('show');
+            scope.setSlide($(this));
+          } else {
+            var id = '#' + $(this).parent().attr('id')
+            $(this).parent().addClass('expanded');
+          }
+          
+        });
+
+      },
+      controller: function($scope, $rootScope, $timeout){
+        $scope.element;
+        $scope.currentImg;
+        $scope.firstimg;
+        //change the slide and caption
+        $scope.setSlide = function(img){
+            $scope.currentImg = img;
+            $rootScope.imgurl = $scope.currentImg.find('img').attr("src");
+            $rootScope.imgcaption = $scope.currentImg.find('.caption').html();
+            $scope.$apply();
+        }
+
+        var currentstep = 1;
+        $scope.back = function(){
+          // var element = $(event.target);
+          if(currentstep <= 1){
+            $scope.element.removeClass('expanded');
+          } else if (currentstep >= 2){
+            $scope.firstimg.css('margin-left', '32px');
+            $scope.element.addClass('bounce-reverse');
+            $timeout(function(){
+              $scope.element.removeClass('bounce-reverse');
+            }, 600);
+            currentstep --;
+          } else {
+            $scope.firstimg.css('margin-left', '-' + (firstimg.width() + 64) * (currentstep - 1) + 'px');
+            $scope.element.addClass('bounce-reverse');
+            $timeout(function(){
+              $scope.element.removeClass('bounce-reverse');
+            }, 600);
+            currentstep --;
+          }
+          
+        }
+
+        //scroll the gallery to the right
+        $scope.next = function(){
+          // var last_right = $(window).width() - ($scope.element.find('.image').last().offset().left + $scope.element.find('.image').last().outerWidth());
+          var size = $scope.element.find('.image').size();
+          if (currentstep < size) {
+            $scope.firstimg.css('margin-left', + ($scope.firstimg.css('margin-left') - ($scope.element.find('.image:nth-child(' + currentstep +')').width() + 64)) + 'px');
+          }
+          currentstep ++;
+          $scope.element.addClass('bounce');
+          $timeout(function(){
+            $scope.element.removeClass('bounce');
+          }, 600);
+          
+        }
+
+        // //detect the position of the gallery
+        // function currentstep(){
+        //   var width = $scope.element.find(' .image').first().width() + 32;
+        //   var left = -$scope.element.find(' .image').first().css('margin-left').slice(0, -2);
+        //   var n = ~~(left / width);
+        //   return n + 1;
+        // }
+
+        //check if the gallery is expanded
+        // $scope.expanded = function(id){
+        //   return $(id).hasClass('expanded');
+        // }
+
+      }
+    }
+  })
   .directive('ptitle', function($location){
     return{
       restrict: 'E',
@@ -156,73 +268,12 @@ angular
       }
     }
   })
-  .controller('AppCtrl', function ($scope, $timeout, $route, $location) {
+  .controller('AppCtrl', function ($scope, $timeout, $route, $location, $rootScope) {
 
-    $scope.expand = function(id){
-      // console.log('expanding '+id);
-      $(id).addClass('expanded');
-    }
-    $scope.back = function(id){
-      if(currentstep(id) <= 1){
-        $(id).removeClass('expanded');
-      } else if (currentstep(id) == 2){
-        $(id + ' .image').first().css('margin-left', '32px');
-        $(id).addClass('bounce-reverse');
-        $timeout(function(){
-          $(id).removeClass('bounce-reverse');
-        }, 600);
-      } else {
-        $(id + ' .image').first().css('margin-left', '-' + ($(id + ' .image').first().width() + 64) * (currentstep(id) - 2) + 'px');
-        $(id).addClass('bounce-reverse');
-        $timeout(function(){
-          $(id).removeClass('bounce-reverse');
-        }, 600);
-      }
-      
-    }
 
-    //scroll the gallery to the right
-    $scope.next = function(id){
-      var last_right = $(window).width() - ($(id + ' .image').last().offset().left + $(id + ' .image').last().outerWidth());
-      if (last_right < 0) {
-        $(id + ' .image').first().css('margin-left', '-' + (($(id + ' .image').first().width() + 64) * currentstep(id)) + 'px');
-      }
-      $(id).addClass('bounce');
-      $timeout(function(){
-        $(id).removeClass('bounce');
-      }, 600);
-      
-    }
 
-    //detect the position of the gallery
-    function currentstep(id){
-      var width = $(id + ' .image').first().width() + 32;
-      var left = -$(id + ' .image').first().css('margin-left').slice(0, -2);
-      var n = ~~(left / width);
-      return n + 1;
-    }
-
-    //check if the gallery is expanded
-    $scope.expanded = function(id){
-      return $(id).hasClass('expanded');
-    }
-
-    var currentImg;
-    //show big image lightbox when clicking on .image
-    $(document).on("click", ".images .image", function(event) {
-      event.stopPropagation();
-      if($( window ).width() <= 960 || $(this).parent().hasClass('expanded')){
-        //prevents the webpage in the background from scrolling
-        $('body').addClass('noscroll');
-        $('.bigimg').removeClass('hidden');
-        $('.bigimg').addClass('show');
-        setSlide($(this));
-      } else {
-        var id = '#' + $(this).parent().attr('id')
-        $scope.expand(id);
-      }
-      
-    });
+    // console.log($scope.currentImg);
+    
 
     //allow body to scroll, fade out image then add hidden class to move it behind the page.
     $scope.hideBigImg = function(){
@@ -230,8 +281,8 @@ angular
       $('body').removeClass('noscroll');
       $timeout(function(){
         $('.bigimg').addClass('hidden');
-        $scope.imgurl = '';
-        $scope.imgcaption = '';
+        $rootScope.imgurl = '';
+        $rootScope.imgcaption = '';
         $('.bigimg').scrollTop(0);
         $scope.$apply();
       }, 500);
@@ -241,10 +292,10 @@ angular
     $scope.nextSlide = function(){
       $('.bigimg').addClass('changing');
       $timeout(function(){
-        if(currentImg.next().hasClass('image')){
-          setSlide(currentImg.next());
+        if($scope.currentImg.next().hasClass('image')){
+          setSlide($scope.currentImg.next());
         } else {
-          var id = '#' + currentImg.parent().attr('id');
+          var id = '#' + $scope.currentImg.parent().attr('id');
           setSlide($(id + ' .image').first());
         };
         $('.bigimg').scrollTop(0);
@@ -256,10 +307,10 @@ angular
     $scope.lastSlide = function(){
       $('.bigimg').addClass('changing');
       $timeout(function(){
-        if(currentImg.prev().hasClass('image')){
-          setSlide(currentImg.prev());
+        if($scope.currentImg.prev().hasClass('image')){
+          setSlide($scope.currentImg.prev());
         } else {
-          var id = '#' + currentImg.parent().attr('id');
+          var id = '#' + $scope.currentImg.parent().attr('id');
           setSlide($(id + ' .image').last());
         };
         $('.bigimg').scrollTop(0);
@@ -269,9 +320,9 @@ angular
 
     //change the slide and caption
     function setSlide(img){
-        currentImg = img;
-        $scope.imgurl = currentImg.find('img').attr("src");
-        $scope.imgcaption = currentImg.find('.caption').html();
+        $scope.currentImg = img;
+        $rootScope.imgurl = $scope.currentImg.find('img').attr("src");
+        $rootScope.imgcaption = $scope.currentImg.find('.caption').html();
         $scope.$apply();
     }
 

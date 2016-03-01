@@ -1,0 +1,13 @@
+<div class="update" project="{{project}}" ng-style="image != undefined && {'background': '#ECECEC url(images/'+image+') no-repeat center top', 'background-size': 'cover'}" ng-class="type">
+  <div class="single-image"  ng-style="image != undefined && {'background': '#ECECEC url(images/'+image+') no-repeat center top', 'background-size': 'cover'}" ng-if="type === 'single'"></div>
+  <div class="text">
+    <a href="#/{{project}}"><h2 class="proj-title">{{title}}<i class="material-icons">&#xE5C8;</i></h2></a>
+    <p class="proj-des">{{description}}</p>
+    <p class="update-date">{{date}}</p>
+    <div class="update-content">
+      <ng-transclude></ng-transclude>
+    </div>
+    <p class="tags"><span class="tag" ng-repeat="tag in tags">#{{tag}} </span>
+  </div>
+  <gallery ng-if="gallery" images="gallery"></gallery>
+</div>

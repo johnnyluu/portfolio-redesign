@@ -1,53 +1,12 @@
 <div class="updates">
-  <div class="update single" project="trademarkvision" style="background: url('images/tv/results.jpg') no-repeat center top; background-size: cover;">
-    <div class="single-image" style="background: url('images/tv/results.jpg') no-repeat center top; background-size: cover;"></div>
-    <div class="text">
-      <a href="#/trademarkvision"><h2 class="proj-title">TrademarkVision<i class="material-icons">&#xE5C8;</i></h2></a>
-      <p class="proj-des">revolutionising image recognition</p>
-      <p class="update-date">26 Feb 2016</p>
-      <div class="update-content">
-        <p><a href="http://www.trademark.vision" target="_blank">TrademarkVision (then CeeqTM)</a> needed a rebranding and improve the usability of their website. They contacted me to do the redesign and build a new Angular based front end from scratch. TrademarkVision uses computer vision to recognise similar trademarks in the market, for brand owners to protect their brand, and for designers to check the originality.</p>
-        <p>The main problem the old application had was the search result. Because trademarks come in all sizes and shapes, when just laying them around as they were on the old site, the result was a very messy. To unify things in the new design, all the trademarks were put in a box, and colour coded with their similarity rating. Additional infomation about the trademarks were moved from image overlays to a separate panel on the side. This resulted in a much cleaner and usable interface. </p>
-      </div>
-    </div>
-  </div>
-  <div class="update gallery" project="misale">
-    <div class="text">
-      <a href="#/misale"><h2 class="proj-title">MiSale<i class="material-icons">&#xE5C8;</i></h2></a>
-      <p class="proj-des">sell your own home portal</p>
-      <p class="update-date">26 Feb 2016</p>
-      <div class="update-content">
-        <p>I've been working with Sunshine Coast startup MiSale to build their product from scratch. <strong>MiSale is a sell your own home portal that lets house owners list their properties on MiSale and realestate.com.au for as low as 0 cost.</strong> Most people sell their homes through real estate agents, but agents charge an average commission of 2.2%. MiSale thinks that house owners can save this money by selling their own houses. They argue that house owners could be much better at selling the houses than real estate agents because they know the houses and the neighbourhoods, and it's the real experience of living in that house buyers want to know. Instead of charging commissions, MiSale provides value adding services such as photographers and signages to the house owners at a low cost.</p>
-        <p>Apart from being cheapest option on the market, MiSale focuses very heavily on making the process of selling own homes easy. Unlike sites designed for realestate agents, MiSale is very interactive and user friendly. House owners can list their properties in 6 simple steps, and buyers can interact or negotiate with the house owners direct. The website is designed to provide great experience on both desktops and mobile phones. We have been working hard on this for months, and the product is very close to launch. <strong>You can sign up for beta testing <a href="http://www.misale.com" target="_blank"><i class="material-icons">&#xE157;</i> here</a>, and get your house listed for free</strong>.</p>
-      </div>
-      <p class="tags"><span class="tag">#Wireframes</span> <span class="tag">#Mockups</span> <span class="tag">#AgileDevelopement</span> <span class="tag">#AngularJS</span> <span class="tag">#HTML5</span> <span class="tag">#CSS3</span> <span class="tag">#JavaScript</span> <span class="tag">#jQuery</span> <span class="tag">#Parse</span>
-    </div>
-    <div class="images" id="26022016misale">
-      <div class="image">
-        <img src="images/misale/soon.jpg">
-      </div>
-      <div class="image">
-        <img src="images/misale/list.jpg">
-      </div>
-      <div class="image">
-        <img src="images/misale/features.jpg">
-      </div>
-      <div class="image">
-        <img src="images/misale/confirm.jpg">
-      </div>
-      <div class="image">
-        <img src="images/misale/interact.jpg">
-        <div class="hover">
-          <p class="caption">Potential buyers interact with sellers direct.</p>
-        </div>
-      </div>
-      <div class="image">
-        <img src="images/misale/about.jpg">
-      </div>
-      <div class="left" ng-click="back('#26022016misale'); $event.stopPropagation();"><i class="material-icons">&#xE5CB;</i></div>
-      <div class="right" ng-click="next('#26022016misale'); $event.stopPropagation()"><i class="material-icons">&#xE5CC;</i></div>
-    </div>
-  </div>
+  <update project="trademarkvision" title="TrademarkVision" description="revolutionising image recognition" type="single" date="26 Feb 2016" image="tv/results.jpg">
+    <p><a href="http://www.trademark.vision" target="_blank">TrademarkVision (then CeeqTM)</a> needed a rebranding and improve the usability of their website. They contacted me to do the redesign and build a new Angular based front end from scratch. TrademarkVision uses computer vision to recognise similar trademarks in the market, for brand owners to protect their brand, and for designers to check the originality.</p>
+    <p>The main problem the old application had was the search result. Because trademarks come in all sizes and shapes, when just laying them around as they were on the old site, the result was a very messy. To unify things in the new design, all the trademarks were put in a box, and colour coded with their similarity rating. Additional infomation about the trademarks were moved from image overlays to a separate panel on the side. This resulted in a much cleaner and usable interface. </p>
+  </update>
+  <update type="gallery" project="misale" title="MiSale" description="sell your own home portal" date="26 Feb 2016" tags="['Wireframes', 'Mockups', 'AgileDevelopment', 'AngularJS', 'HTML5', 'CSS3', 'JavaScript', 'jQuery', 'Parse']" gallery="[['misale/soon.jpg'], ['misale/list.jpg'], ['misale/features.jpg'], ['misale/confirm.jpg'], ['misale/interact.jpg','Potential buyers interact with sellers direct'], ['misale/about.jpg']]">
+    <p>I've been working with Sunshine Coast startup MiSale to build their product from scratch. <strong>MiSale is a sell your own home portal that lets house owners list their properties on MiSale and realestate.com.au for as low as 0 cost.</strong> Most people sell their homes through real estate agents, but agents charge an average commission of 2.2%. MiSale thinks that house owners can save this money by selling their own houses. They argue that house owners could be much better at selling the houses than real estate agents because they know the houses and the neighbourhoods, and it's the real experience of living in that house buyers want to know. Instead of charging commissions, MiSale provides value adding services such as photographers and signages to the house owners at a low cost.</p>
+    <p>Apart from being cheapest option on the market, MiSale focuses very heavily on making the process of selling own homes easy. Unlike sites designed for realestate agents, MiSale is very interactive and user friendly. House owners can list their properties in 6 simple steps, and buyers can interact or negotiate with the house owners direct. The website is designed to provide great experience on both desktops and mobile phones. We have been working hard on this for months, and the product is very close to launch. <strong>You can sign up for beta testing <a href="http://www.misale.com" target="_blank"><i class="material-icons">&#xE157;</i> here</a>, and get your house listed for free</strong>.</p>
+  </update>
   <div class="update single" project="lacasarosa" style="background: url('images/lacasarosa/gallery.jpg') no-repeat center top; background-size: cover;">
     <div class="single-image" style="background: url('images/lacasarosa/gallery.jpg') no-repeat center top; background-size: cover;"></div>
     <div class="text">
