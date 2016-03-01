@@ -165,13 +165,13 @@ angular
       },
       controller: function($scope, $rootScope, $timeout){
         $scope.element;
-        $scope.currentImg;
+        $rootScope.currentImg;
         $scope.firstimg;
         //change the slide and caption
         $scope.setSlide = function(img){
-            $scope.currentImg = img;
-            $rootScope.imgurl = $scope.currentImg.find('img').attr("src");
-            $rootScope.imgcaption = $scope.currentImg.find('.caption').html();
+            $rootScope.currentImg = img;
+            $rootScope.imgurl = $rootScope.currentImg.find('img').attr("src");
+            $rootScope.imgcaption = $rootScope.currentImg.find('.caption').html();
             $scope.$apply();
         }
 
@@ -297,8 +297,7 @@ angular
         if($scope.currentImg.next().hasClass('image')){
           setSlide($scope.currentImg.next());
         } else {
-          var id = '#' + $scope.currentImg.parent().attr('id');
-          setSlide($(id + ' .image').first());
+          setSlide($scope.currentImg.parent().find('.image').first());
         };
         $('.bigimg').scrollTop(0);
         $('.bigimg').removeClass('changing');
@@ -312,8 +311,7 @@ angular
         if($scope.currentImg.prev().hasClass('image')){
           setSlide($scope.currentImg.prev());
         } else {
-          var id = '#' + $scope.currentImg.parent().attr('id');
-          setSlide($(id + ' .image').last());
+          setSlide($scope.currentImg.parent().find('.image').last());
         };
         $('.bigimg').scrollTop(0);
         $('.bigimg').removeClass('changing');
@@ -322,9 +320,9 @@ angular
 
     //change the slide and caption
     function setSlide(img){
-        $scope.currentImg = img;
-        $rootScope.imgurl = $scope.currentImg.find('img').attr("src");
-        $rootScope.imgcaption = $scope.currentImg.find('.caption').html();
+        $rootScope.currentImg = img;
+        $rootScope.imgurl = $rootScope.currentImg.find('img').attr("src");
+        $rootScope.imgcaption = $rootScope.currentImg.find('.caption').html();
         $scope.$apply();
     }
 
