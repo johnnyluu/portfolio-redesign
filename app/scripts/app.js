@@ -145,7 +145,6 @@ angular
       transclude: 'true',
       link: function(scope, element, attrs){
         scope.element = $(element[0].querySelector('.images'));
-        scope.firstimg = scope.element.find('.image').first();
         // console.log(scope.element);
         //show big image lightbox when clicking on .image
         element.on("click", ".images .image", function(event) {
@@ -181,15 +180,8 @@ angular
           // var element = $(event.target);
           if(currentstep <= 1){
             $scope.element.removeClass('expanded');
-          } else if (currentstep >= 2){
-            $scope.firstimg.css('margin-left', '32px');
-            $scope.element.addClass('bounce-reverse');
-            $timeout(function(){
-              $scope.element.removeClass('bounce-reverse');
-            }, 600);
-            currentstep --;
           } else {
-            $scope.firstimg.css('margin-left', '-' + (firstimg.width() + 64) * (currentstep - 1) + 'px');
+            $scope.firstimg.css('margin-left', $scope.firstimg.css('margin-left').slice(0, -2) - ($scope.element.find('.image:nth-child(' + (currentstep - 1) +')')[0].getBoundingClientRect().left) +32 + 'px');
             $scope.element.addClass('bounce-reverse');
             $timeout(function(){
               $scope.element.removeClass('bounce-reverse');
@@ -202,11 +194,21 @@ angular
         //scroll the gallery to the right
         $scope.next = function(){
           // var last_right = $(window).width() - ($scope.element.find('.image').last().offset().left + $scope.element.find('.image').last().outerWidth());
-          var size = $scope.element.find('.image').size();
-          if (currentstep < size) {
-            $scope.firstimg.css('margin-left', + ($scope.firstimg.css('margin-left') - ($scope.element.find('.image:nth-child(' + currentstep +')').width() + 64)) + 'px');
+          if($scope.firstimg === undefined){
+            $scope.firstimg = $scope.element.find('.image').first();
           }
-          currentstep ++;
+          var size = $scope.element.find('.image').size();
+          // console.log($scope.firstimg);
+          var trimmargin;
+          if(currentstep === 1){
+            trimmargin = 64;
+          } else {
+            trimmargin = 64;
+          }
+          if (currentstep < size) {
+            $scope.firstimg.css('margin-left', ($scope.firstimg.css('margin-left').slice(0, -2) - ($scope.element.find('.image:nth-child(' + (currentstep + 1) +')')[0].getBoundingClientRect().left) +32) + 'px');
+              currentstep ++;
+          }
           $scope.element.addClass('bounce');
           $timeout(function(){
             $scope.element.removeClass('bounce');
