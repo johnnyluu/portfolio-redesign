@@ -181,7 +181,9 @@ angular
           if(currentstep <= 1){
             $scope.element.removeClass('expanded');
           } else {
+            //move the last image to 32px to the left edge of the view
             $scope.firstimg.css('margin-left', $scope.firstimg.css('margin-left').slice(0, -2) - ($scope.element.find('.image:nth-child(' + (currentstep - 1) +')')[0].getBoundingClientRect().left) +32 + 'px');
+            //bounce animation
             $scope.element.addClass('bounce-reverse');
             $timeout(function(){
               $scope.element.removeClass('bounce-reverse');
@@ -193,18 +195,11 @@ angular
 
         //scroll the gallery to the right
         $scope.next = function(){
-          // var last_right = $(window).width() - ($scope.element.find('.image').last().offset().left + $scope.element.find('.image').last().outerWidth());
           if($scope.firstimg === undefined){
             $scope.firstimg = $scope.element.find('.image').first();
           }
           var size = $scope.element.find('.image').size();
-          // console.log($scope.firstimg);
-          var trimmargin;
-          if(currentstep === 1){
-            trimmargin = 64;
-          } else {
-            trimmargin = 64;
-          }
+          //move the next image to 32px to the left edge of the screen
           if (currentstep < size) {
             $scope.firstimg.css('margin-left', ($scope.firstimg.css('margin-left').slice(0, -2) - ($scope.element.find('.image:nth-child(' + (currentstep + 1) +')')[0].getBoundingClientRect().left) +32) + 'px');
               currentstep ++;
@@ -215,20 +210,6 @@ angular
           }, 600);
           
         }
-
-        // //detect the position of the gallery
-        // function currentstep(){
-        //   var width = $scope.element.find(' .image').first().width() + 32;
-        //   var left = -$scope.element.find(' .image').first().css('margin-left').slice(0, -2);
-        //   var n = ~~(left / width);
-        //   return n + 1;
-        // }
-
-        //check if the gallery is expanded
-        // $scope.expanded = function(id){
-        //   return $(id).hasClass('expanded');
-        // }
-
       }
     }
   })
