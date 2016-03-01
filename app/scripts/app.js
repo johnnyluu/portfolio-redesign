@@ -331,22 +331,25 @@ angular
       path = $location.path().slice(1);
       step = 1;
       // console.log(path);
-      if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
-        $('.loadmore').show();
-        $('.update').hide();
-        $('.update:lt(5)').show();
-        showTitle();
-      }else{
-        hideTitle();
-        $('.loadmore').hide();
-        $('.update').each(function(){
-          if($(this).attr('project') === path){
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      }
+      $timeout(function(){
+        if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
+          $('.loadmore').show();
+          $('.update').hide();
+          $('.update:lt(5)').show();
+          showTitle();
+        }else{
+          hideTitle();
+          $('.loadmore').hide();
+          $('.update').each(function(){
+            if($(this).attr('project') === path){
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        }
+      }, 300);
+        
     })
 
     function hideTitle(){
