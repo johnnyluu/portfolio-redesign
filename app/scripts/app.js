@@ -312,15 +312,7 @@ angular
       // console.log(next);
       //fadeout animation
       $('body').css('opacity', '0');
-      $timeout(function(){
-        $('body').scrollTop(0);
-        $('body').css('opacity', '1');
-      }, 200);
 
-      //show navbar if not showing
-      if($('.navbar').hasClass('hidden')){
-        $('.navbar').removeClass('hidden');
-      }
     })
 
     var path;
@@ -331,6 +323,9 @@ angular
       path = $location.path().slice(1);
       step = 1;
       // console.log(path);
+      if(path != ''){
+        $('.navbar').removeClass('hidden');
+      }
       $timeout(function(){
         if(path === '' || path === 'about' || path === 'contact' || path === 'work'){
           $('.loadmore').show();
@@ -348,7 +343,7 @@ angular
             }
           });
         }
-      }, 300);
+      }, 500);
         
     })
 
@@ -360,6 +355,11 @@ angular
     function showTitle(){
       $('p.proj-des').show();
       $('h2.proj-title').parent().show();
+    }
+
+    $scope.showpage = function(){
+        $('body').scrollTop(0);
+        $('body').css('opacity', '1');
     }
 
 
