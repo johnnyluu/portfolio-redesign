@@ -30,9 +30,10 @@ angular.module('repoApp')
     //the eyes follow the cursor, not working property in firefox
     $( ".landing" ).mousemove(function( event ) {
     	var w = $('.landing').width();
-    	var h = $('.landing').height();
+        var h = $('.landing').height();
+        var eye_w = $('.eye')[0].getBoundingClientRect().width;
         //move 30% of the size of the pupils based on where the cursor is in relation to the center point of the screen
-    	$('.eye').css('transform', 'translate(' + (((event.pageX - w / 2 ) / (w / 2))*30) + '%,' + (((event.pageY - h / 2) / (h / 2))*30) + '%)');
+    	$('.eye').css('transform', 'translate(' + (((event.pageX - w / 2 ) / (w / 2))*5)*eye_w + 'px,' + (((event.pageY - h / 2) / (h / 2))*5)*eye_w + 'px)');
     });
 
     //typewritter animation
