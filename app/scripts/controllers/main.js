@@ -47,6 +47,7 @@ angular.module('repoApp')
     		current_skill = 0;
     	}
     	count = 0;
+        $('#scrolltext').addClass('animate');
     	$interval(function(){
     		count ++;
     		$('#scrolltext').html(skills[current_skill].substr(0, count));

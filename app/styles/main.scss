@@ -206,7 +206,10 @@ p.tags{
     height: 90px;
     #scrolltext{
       text-decoration: underline;
-      animation: glowing 3s linear 1.6s infinite;
+      &.animate{
+        animation: glowing 3s linear 1.6s infinite;
+      }
+      
     }
   }
   background: white;
